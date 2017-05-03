@@ -1,0 +1,63 @@
+<html>
+    <head>
+    	
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src="app.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    
+    </head>
+    <body>
+    <div class="container">
+    <div class="jumbotron">
+  <h1 class="display-3">Welcome to News+</h1>
+  <p class="lead">Get Any News Instantly. From numerous channels, in one website</p>
+  <hr class="my-4">
+  <p>Select the news channel from below dropdown menu, And click Get News Button.  Its that simple. . . </p>
+  <!-- <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p> -->
+</div>
+    <div ng-app="newsApp" ng-controller="newsAppController">
+	 
+    <div class="row">
+      <div class="col-md-4 offset-md-2 col-sm-12">
+          <select name="carlist" class="form-control" ng-model="source">
+            <option value="">Select your Channel</option>
+            <option value="cnn">CNN</option>
+            <option value="bbc-news">BBC-News</option>
+            <option value="cnbc">CNBC</option>            
+            <option value="the-times-of-india">The Times Of India</option>
+            <option value="the-next-web">The Next Web</option>            
+          </select>
+      </div>
+      <div class="col-md-1"><br></div>
+      
+      <div class="col-md-4 col-sm-12">
+        <button ng-click="fetchNews(source)" class="btn btn-primary">Get News</button>
+      </div>
+    </div>
+	   
+ 
+
+<div ng-repeat="element in myArray" class="row" >     
+<div class="news-card" ng-repeat="subElement in element track by $index" div class="col-md-3" ng-hide="subElement.length" style="padding: 20px;">
+ <div class="card" style="width: 20rem;" >
+  <img class="card-img-top" ng-src="{{subElement.urlToImage}}" alt="Card Image" style="height: 200px">
+  <div class="card-block">
+    <h4 class="card-title">{{subElement.title}}</h4>
+    <p class="card-text">{{subElement.description}}</p>
+    <a ng-href="{{subElement.url}}" target="_blank" class="btn btn-primary">Details</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </body>
+</html>
